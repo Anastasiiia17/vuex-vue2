@@ -6,12 +6,12 @@
      <!-- <router-view/> -->
     <v-row>
     <Photo
-          v-for="photo in photos"
+          v-for="photo in $store.getters.getAllPhotos"
           :photo="photo"
-          @openPhoto="openPhoto"
-        />
+          />
      </v-row>
-     <PhotoDialog :photo="currentPhoto" v-model="dialogVisible"/>
+     <PhotoDialog /> 
+     <!-- :photo="currentPhoto" v-model="dialogVisible" -->
   </v-app>
 </template>
 
@@ -37,17 +37,18 @@ export default {
       // {id: 3, title: 'Фото 3'},
       // {id: 4, title: 'Фото 4'},
     ],
-    currentPhoto: null,
-    dialogVisible: false,
+    // currentPhoto: null,
+    // dialogVisible: false,
   }),
   mounted() {
-    this.fethTodo()
+    // this.fethTodo()
+    this.$store.dispatch("fetchPhotos")
   },
   methods: {
-    fethTodo() {
-       this.axios.get(`https://jsonplaceholder.typicode.com/photos?_limit=10`)
-        .then(response => this.photos = response.data)
-    },
+    // fethTodo() {
+    //    this.axios.get(`https://jsonplaceholder.typicode.com/photos?_limit=10`)
+    //     .then(response => this.photos = response.data)
+    // },
     addPhoto(photo) {
       this.photos.push(photo)
     },
