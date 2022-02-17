@@ -1,12 +1,12 @@
 <template>
-    <div>
+    <v-container>
         фотографии
-    </div>
+    </v-container>
 </template>
 
 <script>
 export default {
-    
+    componen
 }
 </script>
 
